@@ -25,6 +25,17 @@ nn<-neuralnet(f2,training_data,hidden=3)
 // visualisasi
 plot(nn)
 
+// testing accuracy
+index_train <- sample(1:nrow(data2), 0.7 * nrow(data2))
+train_data <- data2[index_train, ]
+test_data <- data2[-index_train, ]
+pred <- predict(nn, test_data)
+pred_class <- ifelse(pred > 0.5, 1, 0)
+conf_matrix <- table(pred_class, test_data$Season)
+conf_matrix
+accuracy_nn <- sum(diag(conf_matrix)) / sum(conf_matrix)
+accuracy_nn
+
 KMEANS
 
 // Preparation 
