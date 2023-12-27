@@ -1,4 +1,5 @@
 ANN
+
 // Membaca dataset
 ProjDAP <- read_excel("C:/Kuliah/CCIT/Semester 3/DAP/ProjDAP.xlsx",
 col_types = c("numeric", "numeric", "numeric",
@@ -51,7 +52,6 @@ print(k_means_result)
 // visualisasi
 attributes <- data2[ ,c("Color","Season")]
 num_cluster <- 3
-
 
 plot(attributes, col = k_means_result$cluster, pch = 20, main = "Trends with kmeans")
 points(k_means_result$centers, col = 1:num_cluster, pch = 3, cex = 2)
