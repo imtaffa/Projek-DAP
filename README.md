@@ -31,7 +31,10 @@ index_train <- sample(1:nrow(data2), 0.7 * nrow(data2))
 train_data <- data2[index_train, ]
 test_data <- data2[-index_train, ]
 pred <- predict(nn, test_data)
-pred_class <- ifelse(pred > 0.5, 1, 0)
+pred_class <-
+    ifelse(pred >= 0 & pred <= 1, 1, 
+           ifelse(pred >= 1 & pred <= 2, 2, 
+                  ifelse(pred >= 2 & pred <= 3, 3, 4)))
 conf_matrix <- table(pred_class, test_data$Season)
 conf_matrix
 accuracy_nn <- sum(diag(conf_matrix)) / sum(conf_matrix)
